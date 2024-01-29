@@ -79,37 +79,36 @@
         border-left: 3px solid rgb(163, 163, 163);
     }
 
-    .card{
+    .card {
         display: flex;
         flex-direction: column;
-        gap:20px;
+        gap: 20px;
         background: #ffffff80;
         padding: 10px;
         border-radius: 10px;
-        max-height:auto;
     }
 
-    .card > img{
-        max-width: 300px;
-        object-fit: contain;
-        border-radius:10px;
+    .card > img {
+        width: 100%;
+        max-height: 700px;
+        object-fit: cover;
+        border-radius: 10px;
     }
 
-    .card > h2{
+    .card > h2 {
         padding: 3px;
         font-size: 25px;
         border-bottom: rgb(163, 163, 163) 2px solid;
     }
 
-    .card > p{
-        font-weight:200;
+    .card > p {
+        font-weight: 200;
         font-size: 25px;
     }
 
-    .card > button{
-        border: none;
+    .card > a {
         background: #83a4f0b3;
-        color:white;
+        color: white;
         border-radius: 5px;
         padding: 15px;
         max-width: 150px;
@@ -119,7 +118,60 @@
         transition: .3s all;
     }
 
-    .card > button:hover{
+    .card > a:hover {
+        background: #5f8efb;
+        font-weight: bold;
+    }
+
+    .news-details {
+    }
+
+    .news-details-container{
+         display: flex;
+        justify-content: center;
+        gap: 20px;
+        background: #ffffff80;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-details-container > img {
+        flex-shrink: 0;
+        width: 300px;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-details-container > div {
+        flex: 1;
+    }
+
+    .news-details-container > div > h2 {
+        padding: 3px;
+        font-size: 25px;
+        border-bottom: rgb(163, 163, 163) 2px solid;
+    }
+
+    .news-details-container > div > p {
+        font-weight: 200;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .news-details-container > div > a {
+        display: inline-block;
+        background: #83a4f0b3;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 15px;
+        text-decoration: none;
+        transition: background-color 0.3s, font-weight 0.3s;
+    }
+
+    .news-details-container > div > a:hover {
         background: #5f8efb;
         font-weight: bold;
     }
