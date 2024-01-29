@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body{
+        font-family: "Roboto", sans-serif;
+        padding: 10vh 10vw;
+        background: #adc2f3b3;
+    }
+    
+    main{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 50px;
+    }
+
+    main > aside {
+        grid-column: span 1;
+    }
+
+    main > section.cards {
+        grid-column: span 3;
+    }
+
+    aside{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .category{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background: #ffffff80;
+        padding: 10px;
+        border-radius: 10px;
+        transition: .3s all;
+    }
+
+    .category:hover{
+        background:#ffffff ;
+    }
+
+    a{
+        text-decoration: none;
+        color:black;
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    .cards{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding-left: 50px;
+        border-left: 3px solid rgb(163, 163, 163);
+    }
+
+    .card{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        background: #ffffff80;
+        padding: 10px;
+        border-radius: 10px;
+        max-height:auto;
+    }
+
+    .card > img{
+        max-width: 300px;
+        object-fit: contain;
+        border-radius:10px;
+    }
+
+    .card > h2{
+        padding: 3px;
+        font-size: 25px;
+        border-bottom: rgb(163, 163, 163) 2px solid;
+    }
+
+    .card > p{
+        font-weight:200;
+        font-size: 25px;
+    }
+
+    .card > button{
+        border: none;
+        background: #83a4f0b3;
+        color:white;
+        border-radius: 5px;
+        padding: 15px;
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        transition: .3s all;
+    }
+
+    .card > button:hover{
+        background: #5f8efb;
+        font-weight: bold;
+    }
+
+</style>
+<body>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>    
+</body>
+</html>
