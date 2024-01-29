@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import *
 
-def index(request):
+def index(request, id=None):
     data = {
         "categories": Categories.objects.all(),
         "news":News.objects.all()
     }
+    if id:
+        data["news"] = News.objects.filter(category=id)
     return render(request, "index.html",data)
     

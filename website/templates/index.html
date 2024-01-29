@@ -85,10 +85,13 @@
             background: #ffffff80;
             padding: 10px;
             border-radius: 10px;
+            max-height:auto;
         }
 
         .card > img{
-            max-height:50%;
+            max-width: 300px;
+            object-fit: contain;
+            border-radius:10px;
         }
 
         .card > h2{
@@ -126,12 +129,12 @@
     <main>
         <aside>
             <div class="category">
-                <a href="$">Все</a>
+                <a href="/">Все</a>
                 <i class="material-icons">menu</i>
             </div>
             {% for category in categories %}
             <div class="category">
-                <a href="#">{{ category.name }}</a>
+                <a href="/category/{{ category.id }}">{{ category.name }}</a>
             </div>
             {% endfor %}
         </aside>
