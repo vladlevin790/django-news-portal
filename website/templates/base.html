@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>{% block title %}{% endblock %}</title>
 </head>
 <style>
@@ -28,11 +30,33 @@
         padding: 10vh 10vw;
         background: #adc2f3b3;
     }
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px;
+        padding-top: 0;
+        padding-bottom: 50px;
+    }
+
+    header > img{
+        max-height: 150px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .auth{
+        display: flex;
+        gap:50px;
+        align-items: center;
+    }
     
     main{
         display: grid;
         grid-template-columns: repeat(4,1fr);
         grid-gap: 50px;
+        padding-top: 20px;
     }
 
     main > aside {
@@ -102,8 +126,14 @@
     }
 
     .card > p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-indent: 3px;
         font-weight: 200;
-        font-size: 25px;
+        font-size: 20px;
+        line-height: 1.4;
+        font-family: "Roboto", sans-serif;
     }
 
     .card > a {
@@ -150,15 +180,22 @@
     }
 
     .news-details-container > div > h2 {
-        padding: 3px;
+        padding-bottom: 3px;
+        padding-left: 0;
         font-size: 25px;
         border-bottom: rgb(163, 163, 163) 2px solid;
     }
 
-    .news-details-container > div > p {
+    .news-details-container > div > pre {
+        display: flex;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        padding-top: 10px;
+        text-indent: 20px;
         font-weight: 200;
         font-size: 20px;
         line-height: 1.4;
+        font-family: "Roboto", sans-serif;
     }
 
     .news-details-container > div > a {
@@ -176,8 +213,30 @@
         font-weight: bold;
     }
 
+    .logout-form{
+        display: none;
+    }
+
 </style>
 <body>
+    <header>
+        <img src="{% static 'logo.png' %}" alt="">
+        <article class="auth">
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <a href="/admin/">Админ-панель</a>
+                {% endif %}
+                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
+
+                 <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                     {% csrf_token %}
+                 </form>
+            {% else %}
+                <a href="{% url 'login' %}">Вход</a>
+                <a href="{% url 'signup' %}">Регистрация</a>
+            {% endif %}
+        </article>
+    </header>
     <main>
         {% block content %}
         {% endblock %}

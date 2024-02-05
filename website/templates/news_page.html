@@ -5,6 +5,7 @@
 {% block content %}
 <aside>
     <div class="category">
+        <span class="material-symbols-outlined">arrow_back</span>
         <a href="/">Вернуться</a>
     </div>
 </aside>
@@ -13,7 +14,7 @@
         <img src="/media/{{ news.photo }}" />
         <div>
             <h2>{{ news.title }}</h2>
-            <p>{{ news.description }}</p>
+            <pre>{{ news.description }}</pre>
         </div>
     </article>
 </section>

@@ -1,6 +1,9 @@
 from django.db import models
 from datetime import datetime as dt
+from django.conf import settings
 
+
+AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 class Categories(models.Model):
     name = models.CharField(verbose_name="Название",
                             max_length=30,
@@ -13,7 +16,6 @@ class Categories(models.Model):
     
     def __str__(self):
         return self.name
-            
 
 class News(models.Model):
     title = models.CharField(verbose_name="Заголовок",
@@ -38,6 +40,6 @@ class News(models.Model):
     
     def __str__(self):
         return self.title
-    
+
     
     

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Новости дня {% endblock %}
+{% block title %}
+    {% if "category" in request.path %}
+        Новости дня: {{ category.name }}
+    {% else %}
+        Новости дня
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 <aside>
@@ -18,9 +24,9 @@
     {% for news in news %}
     <article class="card">
         <img src="/media/{{ news.photo }}" />
-        <h2>{{ news.title }}</h1>
-            <p>{{ news.description }}</p>
-            <a href="/news/{{ news.id }}">Подробнее</a>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.description }}</p>
+        <a href="/news/{{ news.id }}">Подробнее</a>
     </article>
     {% endfor %}
 </section>
