@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(Categories)
 admin.site.register(News)
+admin.site.register(Reviews)

@@ -17,5 +17,18 @@
             <pre>{{ news.description }}</pre>
         </div>
     </article>
+    {% for review in reviews %}
+    <article>
+        <h3>{{ review.user }}</h3>
+        <p>{{ review.text }}</p>
+    </article>
+    {% endfor %}
+    <article class="reviews">
+        <form method="post">
+            {% csrf_token %}
+            {{ review_form }}
+            <input type="submit" value="Отправить">
+        </form>
+    </article>
 </section>
 {% endblock %}
