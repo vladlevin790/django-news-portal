@@ -8,11 +8,13 @@ from .forms import *
 def index(request, id=None):
     data = {
         "categories": Categories.objects.all(),
-        "news" : News.objects.all()
+        "news" : News.objects.all(),
+        'count_news':1,
     }
     if id:
         data["category"] = Categories.objects.get(id=id)
         data["news"] = News.objects.filter(category=id)
+        data['count_news'] = len(News.objects.filter(category=id))
     return render(request, "index.html",data)
 
 def news_page(request, id):

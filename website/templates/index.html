@@ -21,6 +21,7 @@
     {% endfor %}
 </aside>
 <section class="cards">
+    {% if count_news %}
     {% for news in news %}
     <article class="card">
         <img src="/media/{{ news.photo }}" />
@@ -29,5 +30,8 @@
         <a href="/news/{{ news.id }}">Подробнее</a>
     </article>
     {% endfor %}
+    {% else %}
+    <h2>Нету новостей по данной категории.</h2>
+    {% endif %}
 </section>
 {% endblock %}

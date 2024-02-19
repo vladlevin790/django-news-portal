@@ -3,6 +3,80 @@
 {% block title %} {{ news.title }} {% endblock %}
 
 {% block content %}
+<style>
+    .reviews{
+        display: flex;
+        background: #ffffff80;
+        padding: 20px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+    }
+
+    .reviews-h2{
+        background: #ffffff80;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 200px;
+    }
+
+    .review-text{
+        max-width: 350px;
+        font-weight: 200;
+        font-size: 20px;
+        line-height: 1.4;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+
+    .add-reviews > form > div{
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        font-size: 27px;
+        font-weight: bold;
+        font-family: Arial;
+    }
+
+    .add-reviews > form > div > label{
+        background: #ffffff80;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 110px;
+    }
+
+    .add-reviews > form > div > textarea{
+        resize: none;
+        background: #ffffff80;
+        border:none;
+        border-radius: 10px;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 15px;
+        max-width: 900px;
+        max-height: 100px;
+    }
+
+    .add-reviews > form > input{
+        border: none;
+        font-size: 17px;
+        font-family: Arial;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        background: rgba(182, 255, 182, 0.66);
+    }
+
+    .line-top{
+        border-top: 3px solid rgb(163, 163, 163);
+        max-width: 900px;
+        margin-left: -50px;
+    }
+
+</style>
 <aside>
     <div class="category">
         <span class="material-symbols-outlined">arrow_back</span>
@@ -17,18 +91,23 @@
             <pre>{{ news.description }}</pre>
         </div>
     </article>
+    <div class="line-top"></div>
+    <h2 class="reviews-h2">Комментарии:</h2>
     {% for review in reviews %}
-    <article>
+    <article class="reviews">
         <h3>{{ review.user }}</h3>
-        <p>{{ review.text }}</p>
+        <p class="review-text">{{ review.text }}</p>
+        <p>{{ review.date }}</p>
     </article>
     {% endfor %}
-    <article class="reviews">
+    {% if user.is_authenticated %}
+    <article class="add-reviews">
         <form method="post">
             {% csrf_token %}
             {{ review_form }}
             <input type="submit" value="Отправить">
         </form>
     </article>
+    {% endif %}
 </section>
 {% endblock %}
